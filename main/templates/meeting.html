@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="{% static 'styles/index.css' %}" />
+		<link rel="stylesheet" href="{% static 'styles/checkbox.css' %}" />
+		<link rel="stylesheet" href="{% static 'styles/background.css' %}" />
+		<title>To meet</title>
+	</head>
+	<body>
+		<section></section>
+		<h1>List of all meetings:</h1>
+
+		<div class="todo_container">
+			{% for meet in tomeet_list %}
+			<div class="todo_item">
+				<div class="todo_item_header">
+					<label class="checkbox_container">
+						<input type="checkbox" />
+						<span class="checkmark"></span>
+					</label>
+					<h4>{{ meet.persone }}</h4>
+				</div>
+				<div class="todo_item_footer">
+					<p>{{ meet.date_of_meeting }}</p>
+					<div class="action_buttons">
+						<img src="./icons/star2.png" />
+						<img src="./icons/delete.png" />
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+	</body>
+</html>
