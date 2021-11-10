@@ -11,28 +11,46 @@
 		<title>To meet</title>
 	</head>
 	<body>
-		<section></section>
-		<h1>List of all meetings:</h1>
+		<section>
+			<div class="create_container">
+				<form action="{% url 'add-tomeet' %}" method="POST">
+					{% csrf_token %}
+					<input
+						type="text"
+						class="create_input"
+						placeholder="С кем вы хотите встретиться?"
+						name="tomeet_text"
+					/>
+					<input
+						type="text"
+						class="create_input"
+						placeholder="Когда вы хотите встретиться? (формат YYYY-MM-DD)"
+						name="tomeet_date"
+					/>
+					<button class="create_button">Добавить</button>
+				</form>
+			</div>
 
-		<div class="todo_container">
-			{% for meet in tomeet_list %}
-			<div class="todo_item">
-				<div class="todo_item_header">
-					<label class="checkbox_container">
-						<input type="checkbox" />
-						<span class="checkmark"></span>
-					</label>
-					<h4>{{ meet.persone }}</h4>
-				</div>
-				<div class="todo_item_footer">
-					<p>{{ meet.date_of_meeting }}</p>
-					<div class="action_buttons">
-						<img src="{% static './icons/star2.png' %}" />
-						<img src="{% static './icons/delete.png' %}" />
+			<div class="todo_container">
+				{% for meet in tomeet_list %}
+				<div class="todo_item">
+					<div class="todo_item_header">
+						<label class="checkbox_container">
+							<input type="checkbox" />
+							<span class="checkmark"></span>
+						</label>
+						<h4>{{ meet.persone }}</h4>
+					</div>
+					<div class="todo_item_footer">
+						<p>{{ meet.date_of_meeting }}</p>
+						<div class="action_buttons">
+							<img src="{% static './icons/star2.png' %}" />
+							<img src="{% static './icons/delete.png' %}" />
+						</div>
 					</div>
 				</div>
+				{% endfor %}
 			</div>
-			{% endfor %}
-		</div>
+		</section>
 	</body>
 </html>

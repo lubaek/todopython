@@ -15,3 +15,4 @@ class ToMeet(models.Model):
     date_of_meeting = models.DateField(auto_now_add=False)
     is_closed = models.BooleanField(default=False)
     is_favorite = models.BooleanField(default=False)
+
