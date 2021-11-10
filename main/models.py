@@ -16,3 +16,8 @@ class ToMeet(models.Model):
     is_closed = models.BooleanField(default=False)
     is_favorite = models.BooleanField(default=False)
 
+class Habits(models.Model):
+    name = models.CharField(max_length=100)
+    done_for_today = models.BooleanField(default=False)
+    important = models.BooleanField(default=False)
+    comment = models.TextField()
