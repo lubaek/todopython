@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, redirect
 from .models import Todo, ToMeet
 
 # Create your views here.
@@ -14,3 +14,11 @@ def test(request):
 def second(request):
     tomeet_list = ToMeet.objects.all()
     return render(request, 'meeting.html', {'tomeet_list': tomeet_list})
+
+def add_todo(request):
+    form = request.POST
+    text = form["todo_text"]
+    todo = Todo(text=text)
+    todo.save()
+    
+    return redirect(test)
