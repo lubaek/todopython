@@ -78,3 +78,10 @@ def unmark_tomeet(request, id):
     tomeet.is_favorite = False
     tomeet.save()
     return redirect(second)
+
+
+def close_todo(request, id):
+    todo = Todo.objects.get(id=id)
+    todo.is_closed = not todo.is_closed
+    todo.save()
+    return redirect(test)  
