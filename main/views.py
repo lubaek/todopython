@@ -61,3 +61,20 @@ def unmark_todo(request, id):
     todo.save()
     return redirect(test)
 
+
+def delete_tomeet(request, id):
+    tomeet = ToMeet.objects.get(id=id)
+    tomeet.delete()
+    return redirect(second)
+
+def mark_tomeet(request, id):
+    tomeet = ToMeet.objects.get(id=id)
+    tomeet.is_favorite = True
+    tomeet.save()
+    return redirect(second)
+
+def unmark_tomeet(request, id):
+    tomeet = ToMeet.objects.get(id=id)
+    tomeet.is_favorite = False
+    tomeet.save()
+    return redirect(second)
